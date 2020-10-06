@@ -34,7 +34,13 @@ one or more domains in the format "subdomain:IP" in each line.
 9) Run the takeover script in a screen session in multiple session for each region. <br/>
 `Reasoning` - Each Region in AWS has associated different IP subnets. To target companies sitting in 
 US, there are high chances they are running in any of US regions, but may also have assets in other regions like Ireland, Frankfurt etc. So instead of running 
-10 assets in one region, try running 5 assets in the region company HQ is based and other 5 in different regions. 
+10 assets in one region, try running 5 assets in the region company HQ is based and other 5 in different regions.
+
+Screen session example- 
+![alt text](https://user-images.githubusercontent.com/18059590/95270320-22a95400-07f0-11eb-8010-0b628037b2c3.png)
+<br/><br/>
+Email Notification - 
+![alt text](https://user-images.githubusercontent.com/18059590/95270397-42407c80-07f0-11eb-9e48-e5967f890ef0.png)
 
 ## Installation
 `export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
