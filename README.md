@@ -38,9 +38,9 @@ US, there are high chances they are running in any of US regions, but may also h
 
 ## Installation
 `export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-   # The access key for your AWS account.` <br/>
+   The access key for your AWS account.` <br/>
 `export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-   # The secret access key for your AWS account.`<br/> 
+   The secret access key for your AWS account.`<br/> 
    
 ## Reference
 
