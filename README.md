@@ -42,6 +42,10 @@ Screen session example-
 Email Notification - 
 ![alt text](https://user-images.githubusercontent.com/18059590/95270397-42407c80-07f0-11eb-9e48-e5967f890ef0.png)
 
+`Took over a subdomain what next` - 
+SSH into that host, create a simple HTML file and start a python server and you have a running POC.
+(I plan on automating this as well in next release)
+
 ## Installation
 `export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
    The access key for your AWS account.` <br/>
