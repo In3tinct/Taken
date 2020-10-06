@@ -31,7 +31,7 @@ Takeover AWS ips and have a working POC for Subdomain Takeover.
 7) Clone this repo, CD into the directory and open a screen session. export AWS credentials in that session.
 8) Run the fetch subdomain script which uses subfinder and sublist3r.py, You can add more tools to it. This shall generate a list of all the subdomains for
 one or more domains in the format "subdomain:IP" in each line. 
-9) Run the takeover script in a screen session in multiple session for each region. 
+9) Run the takeover script in a screen session in multiple session for each region. <br/>
 `Reasoning` - Each Region in AWS has associated different IP subnets. To target companies sitting in 
 US, there are high chances they are running in any of US regions, but may also have assets in other regions like Ireland, Frankfurt etc. So instead of running 
 10 assets in one region, try running 5 assets in the region company HQ is based and other 5 in different regions. 
