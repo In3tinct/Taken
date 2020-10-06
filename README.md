@@ -1,4 +1,4 @@
-# Tekken
+# Taken
 Takeover AWS ips and have a working POC for Subdomain Takeover.
 
 ## Pre-requisites
