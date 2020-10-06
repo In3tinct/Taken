@@ -5,8 +5,7 @@ Takeover AWS ips and have a working POC for Subdomain Takeover.
 
 ## Pre-requisites
 - AWS Account
-(API keys and few instances running)
-- A separate linux server for running the takeover script in "screen" session. So it runs 24*7. 
+- Knowledge of Linux and Bash script
 
 ## Tech/framework used
 <b>Built with</b>
@@ -23,19 +22,19 @@ Takeover AWS ips and have a working POC for Subdomain Takeover.
 - Run the takeover script in a screen session and wait for email notification.
 
 ## Detailed step 
-1) Create one instance t2.medium (attack machine), free 24*365.
-2) Create 5-10 instances (higher the no. better chances but more the charges) in one or more region, takes 5min.s, have SG Group opened to only your public ip.
-3) Create AWS API keys to stop/start instances
+1) Create one instance t2.medium (attack machine), free of cost 24*365.
+2) Create 5-10 instances (higher the no. better chances but more the charges around $50/month for 10 machines) in one or more region, takes 5min.s, have SG Group opened to only your public ip.
+3) Create AWS API keys to stop/start instances.
 4) SSH to your attack machine.
-5) Set up email notification utility using SSMTP utility.
-6) Set up subfinder and sublist3r.py tools for collecting subdomains. 
-7) Clone this repo and Open a screen session. export AWS credentials.
+5) Install email notification utility SSMTP.
+6) Install subfinder and sublist3r.py tools for collecting subdomains. (Or any other tools you want but that would require you adding it in the script) 
+7) Clone this repo, CD into the directory and open a screen session. export AWS credentials in that session.
 8) Run the fetch subdomain script which uses subfinder and sublist3r.py, You can add more tools to it. This shall generate a list of all the subdomains for
 one or more domains in the format "subdomain:IP" in each line. 
 9) Run the takeover script in a screen session in multiple session for each region. 
-Reasoning - Each Region in AWS has associated different IP subnets. To target companies sitting in 
+`Reasoning` - Each Region in AWS has associated different IP subnets. To target companies sitting in 
 US, there are high chances they are running in any of US regions, but may also have assets in other regions like Ireland, Frankfurt etc. So instead of running 
-10 assets in one region, try running 5 assets in the region company is based and other 5 in different regions. 
+10 assets in one region, try running 5 assets in the region company HQ is based and other 5 in different regions. 
 
 ## Installation
 `export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
