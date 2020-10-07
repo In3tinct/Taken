@@ -13,7 +13,7 @@ Idea is simple - Restart Ec2 instance every min. and public ip gets rotated on e
 - `Bash`
 
 ## Features
-- Gather subdomains.
+- Gather subdomains and do reverse lookup to only target AWS ips.
 - Rotate IPs by restarting ec2 instance until it matches one of the ips in the list. 
 - On a match that IP/host is added in a whitelist file, so it doesn't gets rotated again and send an email notification.
 
