@@ -35,7 +35,7 @@ https://github.com/projectdiscovery/subfinder
 If you do not know how to use screen session - https://linuxize.com/post/how-to-use-linux-screen/
 8) Create a text file with all domains, you want to target, save it as "alldomains" in the same directory and then Run the subdomain-collection script. This script uses subfinder and sublist3r.py. This shall generate a list of all the subdomains for
 one or more domains in the format "subdomain:IP" in each line. Which would later be used to match and notify.
-9) Open another session and export AWS credentials in that session.
+9) Open another screen session and export AWS credentials in that session.
 Exporting AWS keys.
 `export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
    The access key for your AWS account.` <br/>
