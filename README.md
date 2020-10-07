@@ -1,5 +1,3 @@
-## UNDER PROGRESS
-
 # Taken
 Takeover AWS ips and have a working POC for Subdomain Takeover.
 Idea is simple 
