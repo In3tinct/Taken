@@ -38,7 +38,7 @@ Exporting AWS keys.
    The access key for your AWS account.` <br/>
 `export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
    The secret access key for your AWS account.`<br/> 
-8) Run the fetch subdomain-collection script which uses subfinder and sublist3r.py. This shall generate a list of all the subdomains for
+8) Create a text file with all domains, you want to target, save it as "alldomains" in the same directory and then Run the subdomain-collection script. This script uses subfinder and sublist3r.py. This shall generate a list of all the subdomains for
 one or more domains in the format "subdomain:IP" in each line. Which would later be used to match and notify.
 9) Run the takeover script in a screen session. You can also run for each region in different screen session (check the screenshot below). <br/>
 `Reasoning` - Each Region in AWS has associated different IP subnets. To target companies sitting in 
