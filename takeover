@@ -1,0 +1,59 @@
+found=false
+while true; do
+ date;
+
+ #Regions you have instance running on
+ #CHANGE HERE
+ for region in us-east-1
+  do
+  echo "Currently checking - $region"
+
+ #aws-cli request to get all the instances running, running
+ #CHANGE HERE, this filters the ec2 instances which are t3a.nano to stop and restart so we fetch ips
+  for i in $(aws ec2 describe-instances --region "$region" --filters "Name=instance-state-name,Values=running" --filter "Name=instance-type,Values=t3a.nano" --query "Reservations[*].Instances[*].{Instance:InstanceId}" --output json | grep Instance | cut -d '"' -f 4)
+  do
+    if grep "$i" whitelist_instances; then
+        echo "Skipping $i"
+    else
+    (echo "******************************************"
+    echo "Instance Id:$i"
+    oldip=`aws ec2 describe-instances --region "$region" --instance-ids $i --query "Reservations[*].Instances[*].{Instance:PublicIpAddress}" --output json | grep Instance | cut -d '"' -f 4`
+    echo "Old ip:$oldip"
+    echo "Stopping instance"
+    aws ec2 stop-instances --instance-ids $i --region "$region"
+
+    #Wait for the intance to stop before starting
+    aws ec2 wait instance-stopped --instance-ids $i --region "$region"
+    echo "Starting Instance"
+    aws ec2 start-instances --instance-ids $i --region "$region"
+    sleep 60
+    newip=`aws ec2 describe-instances --region "$region" --instance-ids $i --query "Reservations[*].Instances[*].{Instance:PublicIpAddress}" --output json | grep Instance | cut -d '"' -f 4`
+    
+    #Checking if new ip is blank in case of any error (Rarely but may happen that instance didn't start within 1 min. and hence didn't get a new ip)
+    if [ -z "$newip" ]
+    then
+    	continue
+    fi
+    echo "New IP:$newip"
+    #Escaping dots for exact match
+    ip_to_search=$(echo $newip | sed -r 's/\./\\./g')
+
+    #Grepping through our list of subdomains
+    ip_with_hostname=$(grep -w $ip_to_search checkingec2/ip_with_hostname)
+
+    if [ -n "$ip_with_hostname" ]; then
+	found=true
+    fi 
+ 
+    #If match is found send an email notification
+    echo $found 
+    if [ "$found" = true ] ; then
+	echo "Match"
+	echo "$i" "$region" "$ip_with_hostname" >> whitelist_instances
+        echo "Subject: Subdomain Take it Over $ip_with_hostname region $region" | ssmtp youremail@gmail.com
+    fi ) &
+    fi
+  done
+  wait
+ done
+done
