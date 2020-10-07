@@ -5,7 +5,7 @@ Takeover AWS ips and have a working POC for Subdomain Takeover.
 Idea is simple 
 - Get subdomains.
 - Do reverse lookups to only save AWS ips.
-- Restart EC2 instance every min. and public ip gets rotated on each restart. Match it with your existing list of subdomain ips and you have a subdomain takeover. 
+- Restart EC2 instance every min. and public ip gets rotated on each restart. Match it with your existing list of subdomain ips and you have a working subdomain takeover POC. 
 - Notify via email.
 
 ## Pre-requisites
@@ -28,6 +28,7 @@ Idea is simple
 3) Create AWS API keys to stop/start instances.
 4) SSH to your attack machine.
 5) Install email notification utility SSMTP.
+https://www.digitalocean.com/community/questions/how-to-send-emails-from-a-bash-script-using-ssmtp
 6) Install subfinder and sublist3r.py tools for collecting subdomains. (Or any other tools you want but that would require you adding it in the subdomain-collection script) 
 Follow the steps to set these up
 https://github.com/aboul3la/Sublist3r
