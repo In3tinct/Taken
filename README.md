@@ -28,11 +28,20 @@ Idea is simple
 3) Create AWS API keys to stop/start instances.
 4) SSH to your attack machine.
 5) Install email notification utility SSMTP.
-6) Install subfinder and sublist3r.py tools for collecting subdomains. (Or any other tools you want but that would require you adding it in the script) 
-7) Clone this repo, CD into the directory and open a screen session. export AWS credentials in that session.
-8) Run the fetch subdomain script which uses subfinder and sublist3r.py, You can add more tools to it. This shall generate a list of all the subdomains for
-one or more domains in the format "subdomain:IP" in each line. 
-9) Run the takeover script in a screen session in multiple session for each region. <br/>
+6) Install subfinder and sublist3r.py tools for collecting subdomains. (Or any other tools you want but that would require you adding it in the subdomain-collection script) 
+Follow the steps to set these up
+https://github.com/aboul3la/Sublist3r
+https://github.com/projectdiscovery/subfinder
+7) Clone Taken repo, CD into the directory and open a screen session. export AWS credentials in that session.
+If you do not know how to use screen session - https://linuxize.com/post/how-to-use-linux-screen/
+Exporting AWS keys.
+`export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+   The access key for your AWS account.` <br/>
+`export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+   The secret access key for your AWS account.`<br/> 
+8) Run the fetch subdomain-collection script which uses subfinder and sublist3r.py. This shall generate a list of all the subdomains for
+one or more domains in the format "subdomain:IP" in each line. Which would later be used to match and notify.
+9) Run the takeover script in a screen session. You can also run for each region in different screen session (check the screenshot below). <br/>
 `Reasoning` - Each Region in AWS has associated different IP subnets. To target companies sitting in 
 US, there are high chances they are running in any of US regions, but may also have assets in other regions like Ireland, Frankfurt etc. So instead of running 
 10 assets in one region, try running 5 assets in the region company HQ is based and other 5 in different regions.
@@ -49,18 +58,16 @@ SSH into that host, create a simple HTML file and start a python server and you 
 
 ## Running at Bulk
 I scraped through all the public programs at HackerOne and Bugcrowd and top 500 SaaS Forbes/SaaS companies, collected their subdomains and started hitting.
-Within 24 hours i was able to take over 10 subdomains. Instances running total 10 in 3 different regions. Success rate depends highly upon no. of instances running. 
+Within 24 hours i was able to take over 3 subdomains. Instances running total 10 in 3 different regions. Success rate depends highly upon no. of instances running. 
 Since with the script you change around 3600 ips in 24 hours, that would make it around 36000 IPs with 10 instances in 24hours. 
 
 ## Installation
-`export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-   The access key for your AWS account.` <br/>
-`export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-   The secret access key for your AWS account.`<br/> 
+git clone
    
 ## Reference
-
-
+Tools used to collect subdomains.
+https://github.com/projectdiscovery/subfinder
+https://github.com/aboul3la/Sublist3r
 
 ## Contribute
 - Report bugs.
