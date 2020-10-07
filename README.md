@@ -31,16 +31,17 @@ https://www.digitalocean.com/community/questions/how-to-send-emails-from-a-bash-
 Follow the steps to set these up
 https://github.com/aboul3la/Sublist3r
 https://github.com/projectdiscovery/subfinder
-7) Clone Taken repo, CD into the directory and open a screen session. export AWS credentials in that session.
+7) Clone Taken repo and open a screen session to run subdomain-collection script. 
 If you do not know how to use screen session - https://linuxize.com/post/how-to-use-linux-screen/
+8) Create a text file with all domains, you want to target, save it as "alldomains" in the same directory and then Run the subdomain-collection script. This script uses subfinder and sublist3r.py. This shall generate a list of all the subdomains for
+one or more domains in the format "subdomain:IP" in each line. Which would later be used to match and notify.
+9) Open another session and export AWS credentials in that session.
 Exporting AWS keys.
 `export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
    The access key for your AWS account.` <br/>
 `export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
    The secret access key for your AWS account.`<br/> 
-8) Create a text file with all domains, you want to target, save it as "alldomains" in the same directory and then Run the subdomain-collection script. This script uses subfinder and sublist3r.py. This shall generate a list of all the subdomains for
-one or more domains in the format "subdomain:IP" in each line. Which would later be used to match and notify.
-9) Run the takeover script in a screen session. You can also run for each region in different screen session (check the screenshot below). <br/>
+Run the takeover script in a different screen session. You can also run for each region in different screen session (check the screenshot below). <br/>
 `Reasoning` - Each Region in AWS has associated different IP subnets. To target companies sitting in 
 US, there are high chances they are running in any of US regions, but may also have assets in other regions like Ireland, Frankfurt etc. So instead of running 
 10 assets in one region, try running 5 assets in the region company HQ is based and other 5 in different regions.
@@ -62,7 +63,7 @@ Since with the script you change around 3600 ips in 24 hours, that would make it
    
 ## Reference
 Tools used to collect subdomains.
-https://github.com/projectdiscovery/subfinder
+https://github.com/projectdiscovery/subfinder <br/>
 https://github.com/aboul3la/Sublist3r
 
 ## Contribute
