@@ -2,6 +2,7 @@
 
 # Taken
 Takeover AWS ips and have a working POC for Subdomain Takeover.
+Idea is simple - Restart Ec2 instance every min. and public ip gets rotated on each restart. Match it with your existing list of subdomain ips and you have a subdomain takeover. 
 
 ## Pre-requisites
 - AWS Account
@@ -18,10 +19,10 @@ Takeover AWS ips and have a working POC for Subdomain Takeover.
 
 ## How to use?
 - Set up one instance on AWS which would run this script on a screen session.
-- Set up few more instances with instance type a3.nano (cheapeast if i'm correct) in one or more region.
+- Set up few more instances with instance type a3.nano (cheapest if i'm correct) in one or more region.
 - Run the takeover script in a screen session and wait for email notification.
 
-## Detailed step 
+## Detailed steps 
 1) Create one instance t2.medium (attack machine), free of cost 24*365.
 2) Create 5-10 instances (higher the no. better chances but more the charges around $50/month for 10 machines) in one or more region, takes 5min.s, have SG Group opened to only your public ip.
 3) Create AWS API keys to stop/start instances.
