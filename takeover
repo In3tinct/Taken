@@ -8,8 +8,9 @@ while true; do
   do
   echo "Currently checking - $region"
 
- #aws-cli request to get all the instances running, running
+ #aws-cli request to get all the instances running
  #CHANGE HERE, this filters the ec2 instances which are t3a.nano to stop and restart so we fetch ips
+ #Each entry would run as background job till it completes restart of the ec2 instance
   for i in $(aws ec2 describe-instances --region "$region" --filters "Name=instance-state-name,Values=running" --filter "Name=instance-type,Values=t3a.nano" --query "Reservations[*].Instances[*].{Instance:InstanceId}" --output json | grep Instance | cut -d '"' -f 4)
   do
     if grep "$i" whitelist_instances; then
@@ -38,8 +39,8 @@ while true; do
     #Escaping dots for exact match
     ip_to_search=$(echo $newip | sed -r 's/\./\\./g')
 
-    #Grepping through our list of subdomains
-    ip_with_hostname=$(grep -w $ip_to_search checkingec2/ip_with_hostname)
+    #Grepping through our list of subdomains which was earlier saved in ip_with_hostname from subdomain-collection script
+    ip_with_hostname=$(grep -w $ip_to_search ip_with_hostname)
 
     if [ -n "$ip_with_hostname" ]; then
 	found=true
