@@ -59,7 +59,7 @@ SSH into that host, create a simple HTML file and start a python server and you 
 ## Running at Bulk
 I scraped through all the public programs at HackerOne and Bugcrowd and top 500 SaaS Forbes/SaaS companies, collected their subdomains and started hitting.
 Within 24 hours i was able to take over 3 subdomains. Instances running total 10 in 3 different regions. Success rate depends highly upon no. of instances running. 
-Since with the script you change around 3600 ips in 24 hours, that would make it around 36000 IPs with 10 instances in 24hours. 
+Since with the script you change around 1440 ips in 24 hours, that would make it around 14400 IPs with 10 instances in 24hours. 
    
 ## Reference
 Tools used to collect subdomains.
