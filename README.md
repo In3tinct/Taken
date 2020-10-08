@@ -22,7 +22,7 @@ Idea is simple
 
 ## Detailed steps to use
 1) Create one instance t2.medium (attack machine), free of cost 24*365.
-2) Create 5-10 instances (higher the no. better chances but more the charges around $50/month for 10 machines) in one or more region, takes 5min.s, have SG Group opened to only your public ip.
+2) Create 5-10 instances with instance type t3a.nano, probably lowest in cost (higher the no. better chances but more the charges around $60/month for 10 machines) in one or more region, takes 5min.s, have SG Group opened to only your public ip.
 3) Create AWS API keys to stop/start instances.
 4) SSH to your attack machine.
 5) Install email notification utility SSMTP.
