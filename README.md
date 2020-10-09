@@ -4,7 +4,7 @@ Idea is simple
 - Get subdomains.
 - Do reverse lookups to only save AWS ips.
 - Restart EC2 instance every min. and public ip gets rotated on each restart. Match it with your existing list of subdomain ips and you have a working subdomain takeover POC. 
-- Notify via email.
+- Notify via email as soon as you take over a subdomain
 
 ## Pre-requisites
 - AWS Account
