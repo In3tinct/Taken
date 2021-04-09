@@ -1,6 +1,15 @@
 # Taken
 Takeover AWS ips and have a working POC for Subdomain Takeover.
-Idea is simple 
+
+What all you can do with Subdomain Takeover - 
+- Cookies stealing,  If cookies are set with domain attribute set to the hijacked subdomain.
+- CORS request, If Access-Control-Allow-Origin is set to hijacked subdomain.
+- Oauth redirection to get authorization code, If the hijacked subdomain is whitelisted.
+- CSP policies for XSS, IF CSP policy whitelists this subdomain.
+- ClickJacking, If X-Frame-Options whitelists this subdomain.
+- Spoof mails, If SPF record whitelists this subdomain. 
+
+Automation Idea is simple 
 - Get subdomains.
 - Do reverse lookups to only save AWS ips.
 - Restart EC2 instance every min. and public ip gets rotated on each restart. Match it with your existing list of subdomain ips and you have a working subdomain takeover POC. 
