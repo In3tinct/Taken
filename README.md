@@ -86,5 +86,3 @@ https://github.com/aboul3la/Sublist3r
 
 ## License
 GNUV3 © [In3tinct]
-
-Twitter - https://twitter.com/_In3tinct
