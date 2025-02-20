@@ -1,0 +1,9 @@
+cff-version: 1.0
+message: "If you use this software in your research papers or other resources, please cite it as below."
+authors:
+- family-names: "Agrawal"
+  given-names: "Vaibhav"
+title: "Taken: Subdomain TakeOver at Scale"
+version: 1.0
+date-released: 2020-10-14
+url: "https://github.com/In3tinct/Taken"
