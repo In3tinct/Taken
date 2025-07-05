@@ -1,5 +1,5 @@
 # Taken
-Takeover AWS ips and have a working POC for Subdomain Takeover.
+Takeover subdomains using AWS dangling elastic ips and have a working POC for Subdomain Takeover. 
 
 What all you can do with Subdomain Takeover - 
 - Cookies stealing,  If cookies are set with domain attribute set to the hijacked subdomain.
