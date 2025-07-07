@@ -14,7 +14,7 @@ done < alldomains
 sed -E 's/\x1b\[[0-9]{1,2}m(.*?)\x1b\[0m/\1/' allsubdomains_automation > subdomains
 
 rm -rf subdomains1
-rm allsubdomains_automation
+rm -rf allsubdomains_automation
 
 # Resolving the subdomains to Ip and checking if it belongs to AWS (AWS domain would have "ec2" keyword in it)
 while IFS= read -r line
