@@ -5,11 +5,16 @@ while IFS= read -r domain
 do
   echo "$domain"
   subfinder -d "$domain" | grep "$domain" > subdomains1
-  #Removing the colors using sed since sublister put colors in output due to which sort and uniq doesn't matches and work
-  python sublist3r.py -d "$domain" | grep "$domain" | grep -v "Enumerating" | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" >> subdomains1
+  python sublist3r.py -d "$domain" | grep "$domain" | grep -v "Enumerating" >> subdomains1
   #Removing any leading . and -, wrong entries coming out from the tools
   sort subdomains1 | uniq | sed 's/^\.//g' | sed 's/^\-//g' >> allsubdomains_automation
 done < alldomains
+
+#Removing the colors using sed since sublister put colors in output due to which sort and uniq doesn't matches and work
+sed -E 's/\x1b\[[0-9]{1,2}m(.*?)\x1b\[0m/\1/' allsubdomains_automation > subdomains
+
+rm -rf subdomains1
+rm allsubdomains_automation
 
 # Resolving the subdomains to Ip and checking if it belongs to AWS (AWS domain would have "ec2" keyword in it)
 while IFS= read -r line
@@ -31,15 +36,10 @@ do
       echo "$hostips" | xargs -I % -n 1 echo "$line":"%" >> ec2ips_with_hostname
     fi
   fi
-done < allsubdomains_automation
+done < subdomains
 
-
-
-cat ec2ips_with_hostname >> ip_with_hostname
-sort ip_with_hostname | uniq > temp 
 
 # Final list of subdomains in format IP:subdomain will be saved to ip_with_hostname
-mv temp ip_with_hostname 
+sort ec2ips_with_hostname | uniq >> ip_with_hostname
 
-rm allsubdomains_automation
 rm ec2ips_with_hostname
