@@ -34,6 +34,7 @@ do
     if [ -n "$containsec2" ]
     then
       echo "$hostips" | xargs -I % -n 1 echo "$line":"%" >> ec2ips_with_hostname
+      echo "$containsec2" >> aws_region
     fi
   fi
 done < subdomains
