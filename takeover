@@ -11,7 +11,7 @@ while true; do
  
  #CHANGE HERE, this filters the ec2 instances which are "t3a.nano" to stop and restart so we fetch ips
  #Each entry is run as background job for parallelism until the ec2 instance restarts
-  for i in $(aws ec2 describe-instances --region "$region" --filters "Name=instance-state-name,Values=running" --filter "Name=instance-type,Values=t3a.nano" --query "Reservations[*].Instances[*].{Instance:InstanceId}" --output json | grep Instance | cut -d '"' -f 4)
+  for i in $(aws ec2 describe-instances --region "$region" --filters "Name=instance-state-name,Values=running" --filter "Name=instance-type,Values=t2.nano" --query "Reservations[*].Instances[*].{Instance:InstanceId}" --output json | grep Instance | cut -d '"' -f 4)
   do
     if grep "$i" whitelist_instances; then
         echo "Skipping $i"
