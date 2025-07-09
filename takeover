@@ -38,6 +38,8 @@ while true; do
     	continue
     fi
     echo "New IP:$newip"
+    echo "$newip" >> ip_changed
+
     #Escaping dots for exact match
     ip_to_search=$(echo $newip | sed -r 's/\./\\./g')
 
