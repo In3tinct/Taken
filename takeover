@@ -17,10 +17,7 @@ while true; do
         echo "Skipping $i"
     else
     (echo "******************************************"
-    echo "Instance Id:$i"
-    oldip=`aws ec2 describe-instances --region "$region" --instance-ids $i --query "Reservations[*].Instances[*].{Instance:PublicIpAddress}" --output json | grep Instance | cut -d '"' -f 4`
-    echo "Old ip:$oldip"
-    echo "Stopping instance"
+    echo "Stopping instance Id:$i"
     aws ec2 stop-instances --instance-ids $i --region "$region"
 
     #Wait for the intance to stop before starting
@@ -29,8 +26,8 @@ while true; do
     aws ec2 start-instances --instance-ids $i --region "$region"
 
     aws ec2 wait instance-running --instance-ids "$i" --region "$region"
-    # It's also good to wait for status checks to pass
-    aws ec2 wait instance-status-ok --instance-ids "$i" --region "$region"
+    # It's also good to wait for status checks to pass (takes too long)
+    #aws ec2 wait instance-status-ok --instance-ids "$i" --region "$region"
     sleep 5
 
     newip=`aws ec2 describe-instances --region "$region" --instance-ids $i --query "Reservations[*].Instances[*].{Instance:PublicIpAddress}" --output json | grep Instance | cut -d '"' -f 4`
